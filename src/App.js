@@ -60,12 +60,14 @@ const App = () => {
         </button>
       </div>
 
-      <div className="majorTile">
-        {pageSwitch ? (
-          <Nsocard dropDown={dropDown} />
-        ) : (
-          <AllCard dropDown={dropDown} />
-        )}
+      <div className="main-content">
+        <div className="majorTile">
+          {pageSwitch ? (
+            <Nsocard dropDown={dropDown} />
+          ) : (
+            <AllCard dropDown={dropDown} />
+          )}
+        </div>
       </div>
     </>
   );
