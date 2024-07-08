@@ -1,20 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { round } from "lodash";
 
 const AllCards = ({ allCardData, color, dropDown }) => {
   const temp = (color, data) => {
+    let tempYoyVal = 0;
+    let finalVal = "0";
+
+    switch (dropDown) {
+      case "YoY1":
+        tempYoyVal = data[`PY_${color}_POS_Cnt`];
+        break;
+      case "YoY2":
+        tempYoyVal = data[`PPV_${color}_POS_Cnt`];
+        break;
+      case "YoY3":
+        tempYoyVal = data[`PPPV_${color}_POS_Cnt`];
+        break;
+      default:
+        return 0;
+    }
+
+    data[`${data}_${color}_POS_Cnt`] = "";
+
     if (color === "Green") {
       let value = (
-        ((data.CY_Green_POS_Cnt - data.PY_Green_POS_Cnt) /
-          data.PY_Green_POS_Cnt) *
+        ((data.CY_Green_POS_Cnt - tempYoyVal) / tempYoyVal) *
         100
       ).toFixed(2);
+      if (value === "NaN" || value === Infinity || value === "Infinity")
+        return "-";
       return `${round(value, 2)} %`;
     }
     if (color === "Amber") {
       let value = (
-        ((data.CY_Amber_POS_Cnt - data.PY_Amber_POS_Cnt) /
-          data.PY_Amber_POS_Cnt) *
+        ((data.CY_Amber_POS_Cnt - tempYoyVal) / tempYoyVal) *
         100
       ).toFixed(2);
       if (value === "NaN" || value === Infinity) return "-";
@@ -22,12 +41,14 @@ const AllCards = ({ allCardData, color, dropDown }) => {
     }
     if (color === "Red") {
       let value = (
-        ((data.CY_Red_POS_Cnt - data.PY_Red_POS_Cnt) / data.PY_Red_POS_Cnt) *
+        ((data.CY_Red_POS_Cnt - tempYoyVal) / tempYoyVal) *
         100
       ).toFixed(2);
       if (value === "NaN" || value === Infinity) return "-";
       return `${round(value, 2)} %`;
     }
+
+    // setThersholdChange(finalVal);
   };
 
   const getLabel = (name, high, low) => {
@@ -74,7 +95,13 @@ const AllCards = ({ allCardData, color, dropDown }) => {
               {/* {item.Program_Name} &gt; 80k */}
             </span>
             <span className="threshold-value">{getThresholdValue(item)}</span>
-            <span className="threshold-change positive">
+            <span
+              className={`threshold-change ${
+                temp(color, item) !== "-" && parseInt(temp(color, item)) < 0
+                  ? "negative"
+                  : "positive"
+              }`}
+            >
               {temp(color, item)}
             </span>
           </div>

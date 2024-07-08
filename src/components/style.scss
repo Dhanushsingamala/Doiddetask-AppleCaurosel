@@ -94,7 +94,7 @@
 }
 
 .threshold-change {
-  width: 50px;
+  width: 55px;
   text-align: center;
   padding: 2px 5px;
   border-radius: 5px;
@@ -110,6 +110,11 @@
   border-radius: 5px;
   padding: 2px;
   margin: 5px;
+}
+
+.negative {
+  background-color: rgb(239, 204, 204);
+  border: 2px solid red;
 }
 
 .negative {
