@@ -55,7 +55,7 @@ const AllCards = ({ allCardData, color, dropDown }) => {
       case "Green":
         return `${name} > ${high / 1000}K`;
       case "Amber":
-        return `${name} = ${high / 1000}K - ${low / 1000}K `;
+        return `${name} = ${high / 1000} - ${low / 1000}K `;
       case "Red":
         return `${name} < ${low / 1000}K`;
       default:
@@ -95,11 +95,13 @@ const AllCards = ({ allCardData, color, dropDown }) => {
             </span>
             <span className="threshold-value">{getThresholdValue(item)}</span>
             <span
-              className={`threshold-change ${
-                temp(color, item) !== "-" && parseInt(temp(color, item)) < 0
-                  ? "negative"
-                  : "positive"
-              }`}
+             className={`threshold-change ${
+              temp(color, item) === "-" 
+                ? "neutral"
+                : parseInt(temp(color, item)) < 0 
+                ? "negative" 
+                : "positive"
+            }`}
             >
               {temp(color, item)}
             </span>

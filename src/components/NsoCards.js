@@ -37,9 +37,9 @@ const NsoCards = ({ item, dropDown }) => {
     let thirdThresholdValue =
       ((item.CY_Red_POS_Cnt - itemVals[2]) / itemVals[2]) * 100;
 
-    if (firstThresholdValue === Infinity) firstThresholdValue = "- ";
-    if (secondThresholdValue === Infinity) secondThresholdValue = "- ";
-    if (thirdThresholdValue === Infinity) thirdThresholdValue = "- ";
+    if (firstThresholdValue === Infinity) firstThresholdValue = "-";
+    if (secondThresholdValue === Infinity) secondThresholdValue = "-";
+    if (thirdThresholdValue === Infinity) thirdThresholdValue = "-";
 
     setCardData({
       firstThresholdValue,
@@ -47,6 +47,22 @@ const NsoCards = ({ item, dropDown }) => {
       thirdThresholdValue,
     });
   }, [item, dropDown]);
+
+
+  function getClassName(value) {
+    if (value === "-") {
+      return "neutral";
+    } else if (value < 0) {
+      return "negative";
+    } else if(value > 0){
+      return "positive";
+    }
+  }
+
+
+  function renderValue(value) {
+    return value === "-" ? value : `${value}%`;
+  }
 
   //   const finalData = () => {
   //     let itemVals = [];
@@ -97,14 +113,15 @@ const NsoCards = ({ item, dropDown }) => {
         </div>
         <div className="card-row card-row2">
           <span>YoY</span>
-          <span className="threshold-change negative">
-            {cardData.firstThresholdValue}%
+          <span className={`threshold-change ${getClassName(cardData.firstThresholdValue)}`}>
+            {renderValue(cardData.firstThresholdValue)}
           </span>
-          <span className="threshold-change positive">
-            {cardData.secondThresholdValue}%
+
+          <span className={`threshold-change ${getClassName(cardData.secondThresholdValue)}`}>
+            {renderValue(cardData.secondThresholdValue)}
           </span>
-          <span className="threshold-change positive">
-            {cardData.thirdThresholdValue}%
+          <span className={`threshold-change ${getClassName(cardData.thirdThresholdValue)}`}>
+            {renderValue(cardData.thirdThresholdValue)}
           </span>
         </div>
       </div>

@@ -12,7 +12,7 @@ const AllCard = ({ dropDown }) => {
     dots: false,
     infinite: false,
     centerMode: false,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     variableWidth: false,
     prevArrow: <h1>⬅️</h1>,

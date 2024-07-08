@@ -42,8 +42,9 @@
   border-radius: 10px;
   padding: 15px;
   background-color: white;
-  width: 250px;
+  width: 275px;
   margin: 10px;
+  height: 158px;
 }
 
 .card-header {
@@ -66,8 +67,9 @@
 .threshold-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 10px;
+  
 }
 
 .indicator {
@@ -94,12 +96,13 @@
 }
 
 .threshold-change {
-  width: 55px;
+  width: 60px;
   text-align: center;
   padding: 2px 5px;
   border-radius: 5px;
   font-size: 12px;
   color: white;
+  height: 20px;
 }
 
 .positive {
@@ -115,6 +118,13 @@
 .negative {
   background-color: rgb(239, 204, 204);
   border: 2px solid red;
+}
+
+.neutral{
+  background-color: rgb(251, 251, 254) ;
+  border: 2px solid lightgrey;
+  color: black;
+  width: 58px;
 }
 
 .negative {
@@ -214,6 +224,7 @@
 //   width: 250px
 // }
 
+
 .nso {
   background-color: #f8f9fa;
   border-radius: 5px;
@@ -229,11 +240,13 @@
   border-radius: 10px;
   padding: 15px;
   background-color: white;
-  width: 250px;
+  width: 235px;
   margin: 10px;
-  height: 158px;
+  height: 154px;
 } 
 
 .slick-slider {
   display: flex !important;
+  align-items: center;
+  justify-content: space-between;
 }
