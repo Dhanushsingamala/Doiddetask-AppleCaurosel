@@ -27,7 +27,11 @@ const AllCard = ({ dropDown }) => {
       const colorData = { color: color, programs: [] };
 
       data.forEach((program) => {
-        const programData = { Program_Name: program.Program_Name };
+        const programData = {
+          Program_Name: program.Program_Name,
+          Best_Threshold_PSW: program.Best_Threshold_PSW,
+          Better_Threshold_PSW: program.Better_Threshold_PSW,
+        };
 
         periods.forEach((period) => {
           programData[`${period}_${color}_POS_Cnt`] =
@@ -42,7 +46,7 @@ const AllCard = ({ dropDown }) => {
   }
 
   const transformedData = transformDataByColor(allCardData);
-  console.log(JSON.stringify(transformedData, null, 2));
+  // console.log(JSON.stringify(transformedData, null, 2));
 
   return (
     <div className="parent">
