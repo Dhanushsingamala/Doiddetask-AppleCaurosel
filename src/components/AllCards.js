@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { round } from "lodash";
 
 const AllCards = ({ allCardData, color, dropDown }) => {
   const temp = (color, data) => {
     let tempYoyVal = 0;
-    let finalVal = "0";
 
     switch (dropDown) {
       case "YoY1":
