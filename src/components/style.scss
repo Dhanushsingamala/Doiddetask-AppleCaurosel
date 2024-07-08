@@ -170,12 +170,17 @@
   font-size: 14px;
 }
 
-.indicators span:first-child {
-  color: #2ecc71;
+.Green {
+  background-color: green;
+  background: green;
 }
-
-.indicators span:last-child {
-  color: #8f201a;
+.Amber {
+  background-color: orange;
+  background: orange;
+}
+.Red {
+  background-color: red;
+  background: red;
 }
 
 .subTitle {

@@ -36,30 +36,18 @@ const AllCards = ({ allCardData, color, dropDown }) => {
         PSW POS <span className="subtitle">by threshold level</span>
       </div>
       <div className="card-content">
-        <div className="threshold-item">
-          <span className="indicator green"></span>
-          <span className="threshold-label">APP &gt; 80k</span>
-          <span className="threshold-value">4</span>
-          <span className="threshold-change positive">
-            {temp(color, "APP")}%
-          </span>
-        </div>
-        <div className="threshold-item">
-          <span className="indicator red"></span>
-          <span className="threshold-label">APR &gt; 50K</span>
-          <span className="threshold-value">116</span>
-          <span className="threshold-change negative">
-            {temp(color, "APR")}%
-          </span>
-        </div>
-        <div className="threshold-item">
-          <span className="indicator green"></span>
-          <span className="threshold-label">Mono AAR &gt; 38K</span>
-          <span className="threshold-value">183</span>
-          <span className="threshold-change positive">
-            {temp(color, "Mono AAR")}%
-          </span>
-        </div>
+        {allCardData?.map((item, idx) => (
+          <div className="threshold-item" key={idx}>
+            <span className={`indicator ${color}`}></span>
+            <span className="threshold-label">
+              {item.Program_Name} &gt; 80k
+            </span>
+            <span className="threshold-value">4</span>
+            <span className="threshold-change positive">
+              {temp(color, "APP")}%
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );
