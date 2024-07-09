@@ -23,7 +23,7 @@ const Nsocard = ({ dropDown }) => {
   return (
     <div className="parent">
       <Slider {...settings}>
-        <Firstcard cname={"nso"} />
+        <Firstcard dropDown = {dropDown} cname={"nso"} />
         {nsoCardData.map((item, idx) => (
           <NsoCards dropDown={dropDown} key={idx} item={item} />
         ))}

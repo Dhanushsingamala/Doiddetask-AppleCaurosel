@@ -51,7 +51,7 @@ const AllCard = ({ dropDown }) => {
   return (
     <div className="parent">
       <Slider {...settings}>
-        <Firstcard cname={"all"} />
+        <Firstcard dropDown = {dropDown} cname={"all"} />
         {transformedData.map((item, idx) => (
           <AllCards
             dropDown={dropDown}
